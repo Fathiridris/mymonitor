@@ -1,0 +1,12 @@
+# data hasil jalan
+log/
+*.csv
+*.log
+grafik.*
+
+# rahasia
+*.env
+
+# bawaan Python
+__pycache__/
+*.pyc

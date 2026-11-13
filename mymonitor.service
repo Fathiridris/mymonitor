@@ -1,0 +1,16 @@
+[Unit]
+Description=My System Monitor
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /opt/mymonitor/monitor.py --interval 5 --log-dir /var/log/mymonitor
+DynamicUser=yes
+LogsDirectory=mymonitor
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+
+[Install]
+WantedBy=multi-user.target
