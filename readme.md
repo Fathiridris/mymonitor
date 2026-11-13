@@ -45,4 +45,4 @@ sudo systemctl enable --now mymonitor
 - Bekerja lewat SSH dan Git
 
 ## Lisensi
-ITEBE
+ITB
