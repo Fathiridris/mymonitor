@@ -1,4 +1,16 @@
 #!/usr/bin/env python3
+"""web_dashboard.py - Dashboard monitoring berbasis web (stdlib saja).
+
+Memakai ulang monitor.py dan top_mem.py (taruh satu folder).
+Server kecil ini melayani dua alamat:
+    /              halaman HTML (tampilan)
+    /api/metrics   data JSON (diambil JavaScript tiap 2 detik)
+
+Pemakaian:
+    python3 web_dashboard.py                   # http://127.0.0.1:8000
+    python3 web_dashboard.py --port 9000 --interval 1
+Keluar: Ctrl+C
+"""
 import argparse
 import json
 import os
@@ -16,6 +28,7 @@ LOCK = threading.Lock()      # supaya thread pengukur dan thread server tidak be
 
 
 def sampler(interval, nproc):
+    """Thread latar belakang: ukur terus-menerus dan simpan hasilnya."""
     total_kb = top_mem.total_ram_kb()
     prev_cpu, prev_net = monitor.read_cpu(), monitor.read_net()
     while True:
